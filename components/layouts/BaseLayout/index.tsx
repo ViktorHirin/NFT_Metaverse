@@ -4,7 +4,6 @@ import MainFooter from '~/components/stories/MainFooter'
 import MainNav from '~/components/stories/MainNav'
 import styleVariables from '~/styles/variables.module.scss'
 
-
 const BaseLayout: FunctionComponent = ({ children }) => {
   return (
     <>

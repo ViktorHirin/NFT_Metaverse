@@ -36,7 +36,7 @@ const MainNav: FunctionComponent = () => {
         }
       ]}
       button={{
-        title: 'Download Game',
+        title: 'Connect Wallet',
         href: 'https://1.envato.market/nft-pipistrelle'
       }}
     />
