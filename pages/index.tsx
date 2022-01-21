@@ -5,6 +5,7 @@ import BaseLayout from '~/components/layouts/BaseLayout'
 import FAQ from '~/components/stories/FAQ'
 import Team from '~/components/stories/Team'
 import About from '~/components/stories/About'
+import Mint from '~/components/stories/Mint'
 import { fetchItems, Item } from '~/pages/api/items'
 import { useEffect, useState } from 'react'
 import Roadmap from '~/components/stories/Roadmap'
@@ -35,6 +36,9 @@ const Home: NextPage<Props> = ({ assets: initialAssets = [] }) => {
         <title>{Configuration.title}</title>
       </Head>
 
+      {/* Mint */}
+      <Mint />
+      
       {/* About */}
       <About />
 
