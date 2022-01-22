@@ -1,0 +1,23 @@
+.container {
+    display: block;
+    width: 100%;
+    max-width: 1024px;
+    margin: 30px auto;
+    background:linear-gradient(to top right, var(--primary-color-darken10), var(--primary-color-darken5));
+    border-radius: 16px;
+    background-position:calc(100vw * var(--index)) 0;
+    box-shadow: 0 0 0 4px var(--primary-color-lighten15), 4px 4px var(--shadow, 8px) 0 rgba(34, 60, 80, 0.2);
+
+    .mint_now_box {
+        width: 50%;
+        padding: 20px;
+        display: inline-block;
+        
+    }
+    
+    .mint_detail {
+        width: 50%;
+        padding: 20px;
+        display: inline-block;
+    }
+}
