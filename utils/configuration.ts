@@ -9,7 +9,7 @@ const Configuration: AppConfiguration = {
   imagesLoader: UNOPTIMIZED_IMAGES ? resolverProps => resolverProps.src : undefined,
   collection: {
     type: 'opensea',
-    slug: 'monstershelter',
+    slug: 'CryptosDragon',
     // You can request an API token here https://docs.opensea.io/reference/request-an-api-key
     apiToken: '2f6f419a083c46de9d83ce3dbe7db601'
   },
