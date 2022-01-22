@@ -15,6 +15,10 @@ const MainNav: FunctionComponent = () => {
           href: '/#about'
         },
         {
+          title: 'Mint',
+          href: '/#mint'
+        },
+        {
           title: 'Explore',
           href: '/#explore'
         },

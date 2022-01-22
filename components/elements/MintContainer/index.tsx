@@ -64,26 +64,29 @@ const MintContainer: FunctionComponent<MintContainerProps> = ({id, title}) => {
     }
 
     const loadBlockchainData = async () => {
+      
       const contract = new window.web3.eth.Contract(contractAbi, contractAddress);
       setContract(contract);
       const chainId = await window.web3.eth.getChainId();
 
       setChainId(chainId);
+      
       //success when chainId = 4 else failure
       // you are connected to main net
       // Please connect to main net
       
       if (chainId === 4) {
+        
         toast(`You are connected to main net`, {
           type: "success",
           position: toast.POSITION.BOTTOM_CENTER,
         });
         
-        
-
+      
         const totalSupply = await contract.methods.getTotalSupply().call();
         setTotalSupply(totalSupply);
-  
+        
+
         const price = await contract.methods.getMintFee().call();
         setPrice(price);
 
@@ -94,12 +97,13 @@ const MintContainer: FunctionComponent<MintContainerProps> = ({id, title}) => {
         // setMaxSupply(MAX_SUPPlY);
 
         // event will be fired by the smart contract when a new NFT is minted
-        contract.events
-          .NFTMinted()
-          .on("data", async function (result) {
-            setTotalSupply(result.returnValues[0]);
-          })
-          .on("error", console.error);
+        // contract.events
+        //   .NFTMinted()
+        //   .on("data", async function (result) {
+        //     setTotalSupply(result.returnValues[0]);
+        //   })
+        //   .on("error", console.error);
+
       } else {
         toast("Please connect to Rinkeby Testnet", {
           type: "error",
@@ -139,12 +143,13 @@ const MintContainer: FunctionComponent<MintContainerProps> = ({id, title}) => {
     };
 
     async function mint(mintCount) {
+      
       if(mintCount > 0 && contract ) {
+
         if (chainId === 4) {
           contract.methods.mintToken(mintCount).send({
             from: account,
-            gas: 200000,
-            value: web3.utils.fromWei(price * mintCount, "ether")
+            value: Number(price) * mintCount
           })
           .then((res) => {
             console.log(res);
@@ -209,19 +214,19 @@ return(
                 <div className="col-md-5 pl-0 pl-md-3 mt-3 mt-md-0">
                   <div className="input-group">
                     <input
-                      className="form-control"
+                      className={styles.input}
                       type="number"
                       max={10}
                       value={mintCount}
                       onChange={changeHandler}
                     />
-                    <div className="input-group-append">
-                      <button className="btn" type="button">
+                    {/* <div className={styles.maxcontainer}>
+                      <button className={styles.button} type="button">
                         10 max
                       </button>
-                    </div>
+                    </div> */}
                   </div>
-                  <span className="total-box">
+                  <span className={styles.totalbox}>
                     Total <strong>{(displayPrice * mintCount).toFixed(3)} ETH</strong>
                   </span>
                 </div>
@@ -229,7 +234,7 @@ return(
               {
                 account ? 
                 (<button
-                  className="btn btn-outline-light mt-3 rounded-pill mint-btn"
+                  className={styles.button}
                   type="button"
                   onClick={mintHandler}
                 >
@@ -238,7 +243,7 @@ return(
                 :
                 (
                   <button
-                    className="btn btn-outline-light mt-3 rounded-pill mint-btn"
+                    className={styles.button}
                     type="button"
                     onClick={loadWeb3}
                   >
@@ -261,16 +266,13 @@ return(
                   Presale Mint Cost :<strong>0.05 ETH + GAS</strong>
                 </li>
                 <li>
-                  Sale Mint Cost: <strong>0.03 ETH + GAS</strong>
-                </li>
-                <li>
                   Max Supply : <strong>10,000</strong>
                 </li>
                 <li>
                   Max Mint Per Order : <strong>10 NFT</strong>
                 </li>
                 <li>
-                  Presale : <strong>9950</strong>
+                  Presale : <strong>50</strong>
                 </li>
                 <li>
                   Giveaway : <strong>50 (reserved for contest)</strong>

@@ -27,11 +27,11 @@ const Nav: FunctionComponent<NavProps> = ({ logo, items, button }) => {
           ))}
         </ul>
         {/* Button */}
-        <Link href={button.href}>
+        {/* <Link href={button.href}>
           <a className={styles.button}>
             {button.title}
           </a>
-        </Link>
+        </Link> */}
       </Container>
     </nav>
   )
