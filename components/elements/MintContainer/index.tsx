@@ -191,9 +191,9 @@ return(
             
             <div className="mint-header">
               <div className="mint-header-text">
-                <h2 className="mint-box-title">Join The Cheetah Gang</h2>
+                <h2 className="mint-box-title">Mint CryptosDragon </h2>
                 <p className="mint-box-para">
-                  Enter the amount of cheetah you would like to purchase.
+                  Enter the amount of CryptosDragon you would like to purchase.
                 </p>
               </div>
             </div>
@@ -203,7 +203,7 @@ return(
                 <div className="col-md-7">
                   <div className="price-box">
                     <div className="price-text-box text-right">
-                      <h5 className="price-text">Price per Cheetah</h5>
+                      <h5 className="price-text">Price per CryptosDragon</h5>
                       <h4 className="price-tag">
                         <span className="text-danger">{displayPrice}</span> ETH Each
                       </h4>
@@ -253,10 +253,7 @@ return(
               }
               
             </div>
-
           </div>
-
-
 
           <div className={styles.mint_detail} >
             <div className="numbers-main">
@@ -287,8 +284,6 @@ return(
             </div>
           </div>
         </div>
-              
-          
       </Container>
     </div>
     )
