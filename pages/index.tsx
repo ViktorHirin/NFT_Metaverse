@@ -39,7 +39,7 @@ const Home: NextPage<Props> = ({ assets: initialAssets = [] }) => {
 
       {/* About */}
       <About />
-
+      
       <Mint />
 
       {/* Explore */}
