@@ -9,7 +9,7 @@ import About from '~/components/stories/About'
 import { fetchItems, Item } from '~/pages/api/items'
 import { useEffect, useState } from 'react'
 import Roadmap from '~/components/stories/Roadmap'
-// import Explore from '~/components/stories/Explore'
+import Explore from '~/components/stories/Explore'
 import Mint from '~/components/stories/Mint'
 
 interface Props {
@@ -19,17 +19,17 @@ interface Props {
 const Home: NextPage<Props> = ({ assets: initialAssets = [] }) => {
   const [assets, setAssets] = useState(initialAssets)
 
-  // useEffect(() => {
-  //   if (assets.length === 0 && typeof window !== 'undefined') {
-  //     fetch('/api/items')
-  //       .then(response => response.json())
-  //       .then(setAssets)
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (assets.length === 0 && typeof window !== 'undefined') {
+      fetch('/api/items')
+        .then(response => response.json())
+        .then(setAssets)
+    }
+  }, [])
 
-  // if (assets.length === 0) {
-  //   return null
-  // }
+  if (assets.length === 0) {
+    return null
+  }
 
   return (
     <BaseLayout>
@@ -43,7 +43,7 @@ const Home: NextPage<Props> = ({ assets: initialAssets = [] }) => {
       <Mint />
 
       {/* Explore */}
-      {/* <Explore assets={assets} /> */}
+      <Explore assets={assets} />
 
       {/* Roadmap */}
       <Roadmap />
