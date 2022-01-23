@@ -3,8 +3,8 @@ import { ImageLoader } from "next/image"
 const UNOPTIMIZED_IMAGES = process.env.UNOPTIMIZED_IMAGES === 'true'
 
 const Configuration: AppConfiguration = {
-  title: 'Monster Shelter',
-  description: 'Monster Shelter is a new exciting NFT-project from a team that loves horror and cute things.',
+  title: 'Crypto Dragon',
+  description: 'Crypto Dragon is a new exciting NFT-project from a team that loves horror and cute things.',
   unoptimizedImages: UNOPTIMIZED_IMAGES,
   imagesLoader: UNOPTIMIZED_IMAGES ? resolverProps => resolverProps.src : undefined,
   collection: {

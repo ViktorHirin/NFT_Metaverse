@@ -13,6 +13,8 @@ import Web3 from "web3";
 
 import { contractAbi, contractAddress } from "../../../contract/config";
 
+declare var window: any
+
 const MintContainer: FunctionComponent<MintContainerProps> = ({id, title}) => {
     const [chainId, setChainId] = useState(null);
     const [account, setAccount] = useState(null);
@@ -40,9 +42,9 @@ const MintContainer: FunctionComponent<MintContainerProps> = ({id, title}) => {
     const [saleLive, setSaleLive] = useState(false);
     const [preSale, setPreSale] = useState(false);
   
-    let window: any;
-
+    
     async function loadWeb3() {
+      
       if (window.ethereum) {
         window.web3 = new Web3(window.ethereum);
         try {
