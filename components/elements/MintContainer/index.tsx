@@ -40,6 +40,8 @@ const MintContainer: FunctionComponent<MintContainerProps> = ({id, title}) => {
     const [saleLive, setSaleLive] = useState(false);
     const [preSale, setPreSale] = useState(false);
   
+    let window: any;
+
     async function loadWeb3() {
       if (window.ethereum) {
         window.web3 = new Web3(window.ethereum);
@@ -47,13 +49,13 @@ const MintContainer: FunctionComponent<MintContainerProps> = ({id, title}) => {
           
           loadBlockchainData();
           getCurrentAddressConnected();
-          addAccountsAndChainListener();
+          // addAccountsAndChainListener();
           const accounts = await window.ethereum.request({
             method: "eth_requestAccounts",
           });
           setAccount(accounts[0]);
           localStorage.setItem("account", "metamask");
-        } catch (error) {
+        } catch (error:any) {
           if (error.code === 4001) {
             setAccessAccountDenied(true);
           } else console.error(error);
@@ -125,24 +127,24 @@ const MintContainer: FunctionComponent<MintContainerProps> = ({id, title}) => {
       }
     };
   
-    const addAccountsAndChainListener = async () => {
-      //this event will be emitted when the currently connected chain changes.
-      window.ethereum.on("chainChanged", (_chainId) => {
-        window.location.reload();
-      });
+    // const addAccountsAndChainListener = async () => {
+    //   //this event will be emitted when the currently connected chain changes.
+    //   window.ethereum.on("chainChanged", (chainId) => {
+    //     window.location.reload();
+    //   });
   
-      // this event will be emitted whenever the user's exposed account address changes.
-      window.ethereum.on("accountsChanged", (accounts) => {
-        window.location.reload();
-      });
-    };
+    //   // this event will be emitted whenever the user's exposed account address changes.
+    //   window.ethereum.on("accountsChanged", (accounts) => {
+    //     window.location.reload();
+    //   });
+    // };
 
     const mintHandler = () => {
-      mint(mintCount);
+      mint(contract, mintCount);
       // alert('mintHandler');
     };
 
-    async function mint(mintCount) {
+    async function mint(contract:any ,mintCount: any) {
       
       if(mintCount > 0 && contract ) {
 
@@ -151,12 +153,12 @@ const MintContainer: FunctionComponent<MintContainerProps> = ({id, title}) => {
             from: account,
             value: Number(price) * mintCount
           })
-          .then((res) => {
+          .then((res:any) => {
             console.log(res);
             toast.success(`${mintCount} NFTs are minted successfully!`);
             toast.info('Please check NFTs on https://testnets.opensea.io/ ');
           })
-          .catch(err => {
+          .catch((err:any) => {
             console.log(err);
             toast.error("Minting Failed!, please check Network state");
           });
@@ -164,7 +166,7 @@ const MintContainer: FunctionComponent<MintContainerProps> = ({id, title}) => {
       }
     }
 
-    const changeHandler = (e) => {
+    const changeHandler = (e:any) => {
         const reg = /^[0-9\b]+$/;
         if (e.target.value === "" || reg.test(e.target.value)) {
           if (e.target.value === "" || e.target.value <= 10) {
